@@ -15,55 +15,71 @@ const map = [
     "W       W       W   W",
     "WWWWWWWWWWWWWWWWWWWWW",
 ];
-const is = [0];
-const js = [0];
 let linha = 9;
 let coluna = 1;
+
+const colunaDiv = document.querySelector("#coluna");
+const linhaDiv = document.querySelector("#linha");
+
+function criandoColuna(labirinto) {
+    for (let i = 0; i < labirinto.length; i++) {
+        let j = 0;
+        const labirintite = document.createElement("div");
+        // labirintite.classList = `linha ${i + 1}`;
+        labirintite.classList = "parede";
+        colunaDiv.appendChild(labirintite);
+        j++;
+    }
+}
+function criandoLinha(labirinto) {
+    const linha = document.querySelectorAll("#coluna>div");
+    for (let i = 0; i < labirinto.length; i++) {
+        let count = 0;
+        for (let j = 0; j < labirinto[i].length; j++) {
+            if (count === 0) {
+                if (j < 21) {
+                    const labirintite = document.createElement("div");
+                    if (labirinto[i][j] === "W") {
+                        labirintite.classList = "parede";
+                    }else if (labirinto[i][j] === "S"){
+                        labirintite.classList = "start";
+                    }
+                    linha[i].appendChild(labirintite);
+                }
+            }
+        }
+        count++;
+    }
+}
+
+
+
+criandoColuna(map);
+criandoLinha(map);
 document.addEventListener("keydown", (event) => {
-    let count = 0;
     const keypress = event.key;
     if (keypress == "ArrowRight") {
-        for (let i = linha; i < map.length; i++) {
-            for (let j = coluna; j < map[i].length; j++) {
-                if (map[i][j] === " " && map[i][j] != "W" && count == 0) {
-                    // move pra direita
-                    console.log(map[i][j]);
-                    console.log(i, j)
-                    console.log("pra direita")
-                    count++;
-                    coluna++;
-                }
-            }
+        if (map[linha][coluna + 1] === " ") {
+            // move pra direita
+            console.log("oi")
+            coluna++;
         }
     } else if (keypress == "ArrowLeft") {
-        for (let i = linha; i < map.length; i++) {
-            for (let j = coluna; j <= map[i].length; j++) {
-                if (map[i][j - 1] === " " && map[i][j - 1] != "W" && count == 0) {
-                    // move pra esquerda
-                    console.log(map[i][j - 1]);
-                    console.log(i, j)
-                    console.log("pra esquerda")
-                    count++;
-                    coluna--;
-                }
-            }
+        if (map[linha][coluna - 1] === " ") {
+            console.log("oi")
+            // move pra esquerda
+            coluna--;
         }
     } else if (keypress == "ArrowUp") {
-        if (map[linha][coluna] === " " && map[linha][coluna] != "W" && count == 0) {
+        if (map[linha - 1][coluna] === " ") {
+            console.log("oi")
             // move pra cima
-            console.log(map[linha][coluna]);
-            console.log(linha, coluna)
-            console.log("pra cima");
-            count++;
             linha--;
         }
     } else if (keypress == "ArrowDown") {
-        if (map[linha][coluna] === " " && map[linha][coluna] != "W" && count == 0) {
+        if (map[linha + 1][coluna] === " ") {
+            console.log("oi")
             // move pra baixo
-            console.log(map[linha + 1][coluna]);
-            console.log(linha, coluna)
-            console.log("pra baixo");
-            count++;
             linha++;
         }
     }
