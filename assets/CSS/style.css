@@ -1,7 +1,65 @@
+body{
+    background-color: lightgray;
+}
 div{
     width: 50px;
     height: 50px;
 }
 .parede{
     background-color: blue;
+}
+.linha{
+    display: flex;
+    width: 1050px;
+}
+.start{
+    width: 40px;
+    height: 40px;
+    background-color: crimson;
+    position: absolute;
+    top: 455px;
+    left: 5px;
+    transition: 0.5s;
+}
+.final{
+    background-color: grey;
+}
+#esconde{
+    margin: auto;
+    width: 480px;
+}
+#vitoria{
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 480px;
+}
+.vitoria_mensagem{
+    display: block;
+    width: 480px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3.5em;
+    font-weight: 600;
+    font-family: sans-serif;
+    margin: 20px 0;
+}
+#reload{
+    border: none;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+    margin: 30px 0;
+    background: #2e2ef2;
+    color: #eae6e6;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.festeja{
+    border-radius: 40px;
+}
+.hidden{
+    display: none;
 }
